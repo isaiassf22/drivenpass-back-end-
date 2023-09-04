@@ -21,6 +21,12 @@ export class UserRepository {
     return await this.prisma.users.findMany()
   }
 
+  async verify(email: string){
+    return await this.prisma.users.findFirst({
+      where:{ email}
+    })
+  }
+
   async findOne(id: number) {
     return await this.prisma.users.findFirst({
       where: { id }
